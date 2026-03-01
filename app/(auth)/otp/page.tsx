@@ -8,8 +8,8 @@ import GradientButton from '../../../components/GradientButton';
 export default function OTPScreen() {
   const router = useRouter();
   
-  // State to hold the 4 digits
-  const [code, setCode] = useState(['', '', '', '']);
+  // State to hold the 6 digits (Updated)
+  const [code, setCode] = useState(['', '', '', '', '', '']);
 
   // Helper to update a specific box
   const handleCodeChange = (text: string, index: number) => {
@@ -26,9 +26,9 @@ export default function OTPScreen() {
         Enter the OTP sent to your email or phone number
       </Text>
 
-      {/* The 4 OTP Boxes */}
+      {/* The 6 OTP Boxes (Updated array mapping) */}
       <View style={styles.otpContainer}>
-        {[0, 1, 2, 3].map((index) => (
+        {[0, 1, 2, 3, 4, 5].map((index) => (
           <TextInput
             key={index}
             style={styles.otpBox}
@@ -44,7 +44,7 @@ export default function OTPScreen() {
         title="Verify" 
         onPress={() => {
           console.log('Verifying code:', code.join(''));
-          router.push('/reset-password'); // CHANGED: Now flows to the new reset password screen
+          router.push('/reset-password');
         }} 
       />
 
@@ -84,29 +84,28 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   
-  // OTP Box Styles
+  // OTP Box Styles (Updated width to fit 6 boxes nicely)
   otpContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 40,
-    paddingHorizontal: 20,
+    // Removed paddingHorizontal here to give the 6 boxes more room
   },
   otpBox: {
-    width: 60,
-    height: 65,
+    width: 50, // Reduced from 60
+    height: 60, // Reduced from 65 to keep proportions
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     fontSize: 28,
     fontWeight: 'bold',
     textAlign: 'center',
     color: '#6A1B1B',
-    // Floating shadow
     shadowColor: '#000', 
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.1, 
     shadowRadius: 4, 
     elevation: 2,
-    outlineStyle: 'none', // Removes default web browser focus ring
+    outlineStyle: 'none', 
   } as any,
 
   footerContainer: { 
