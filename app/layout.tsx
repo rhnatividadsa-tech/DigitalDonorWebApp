@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "Support meaningful causes and make an impact in different communities.",
   icons: {
     icon: '/logo_h.png', // Uses your logo_h.png from the public folder
-  },
+  },  
 };
 
 export default function RootLayout({
